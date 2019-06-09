@@ -47,9 +47,9 @@ state_size = len(state)
 #Initialize the agent
 agent = Agent(state_size=state_size, action_size = action_size, seed=0,)
 
+# Loading pretrained model for eval
 if train==False:
     agent.qnetwork_local=torch.load('checkpoint_DQN.pth')
-    #agent.qnetwork_target.load_state_dict(torch.load('checkpoint.pth'))
     agent.qnetwork_local.eval()
 
 def dqn(n_episodes=2000 if train else 200, max_t=10000, eps_start=1.0, eps_end=0.01, eps_decay=0.995):
@@ -89,7 +89,6 @@ def dqn(n_episodes=2000 if train else 200, max_t=10000, eps_start=1.0, eps_end=0
         scores.append(score)              # save most recent score
         eps = max(eps_end, eps_decay*eps) # decrease epsilon
         print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_window)), end="")
-        #print('\n epsilon: '+str(eps))
         if i_episode % 100 == 0:
             print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_window)))
             print('\n epsilon: '+str(eps))
