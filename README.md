@@ -17,6 +17,9 @@ The state space has 37 dimensions and contains the agent's velocity, along with 
 This implementation can either be run in training mode to train an intelligent agent from scratch, or it can be run in evaluation mode to see the performance of the pretrained agent.
 
 ## Installation
+
+_NOTE: This environment **only** works with **Linux**_
+
 ml-agents demands the usage of Python 3.6. The easiest way is to use a new conda environment like so:
 ```
 conda create -name bananas python=3.6
